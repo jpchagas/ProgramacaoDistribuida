@@ -1,31 +1,22 @@
-/**
- * 
- */
-package chungtoigame;
+import java.rmi.Naming;
+import java.rmi.RemoteException;
 
-/**
- * @author joao
- *
- */
 public class ChungToiServer {
 
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		try {
-			
-		} catch (Exception e) {
-			// TODO: handle exception
+			java.rmi.registry.LocateRegistry.createRegistry(1099);
+			System.out.println("RMI registry ready.");
+		} catch (RemoteException e) {
+			System.out.println("RMI registry already running.");
 		}
-		
 		try {
-			
+			Naming.rebind ("ChungToi", new ChungToiImpl());
+			System.out.println ("ChungToi is ready.");
 		} catch (Exception e) {
-			// TODO: handle exception
+			System.out.println ("ChungToi failed:");
+			e.printStackTrace();
 		}
-		
 	}
 
 }
