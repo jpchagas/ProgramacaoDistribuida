@@ -1,26 +1,35 @@
-all:			PidClient.class PidServer.class \
-			PidImpl.class PidInterface.class
+all:			ChungToiClient.class ChungToiServer.class \
+			ChungToiImpl.class ChungToiInterface.class \
+			ChungToi.class Player.class
 
-PidImpl.class:		PidImpl.java PidInterface.class
-			@javac PidImpl.java
+ChungToiImpl.class:	ChungToiImpl.java ChungToiInterface.class
+			javac ChungToiImpl.java
 
-PidInterface.class:	PidInterface.java
-			@javac PidInterface.java
+ChungToiInterface.class:	ChungToiInterface.java
+			javac ChungToiInterface.java
 
-PidClient.class:	PidClient.java
-			@javac PidClient.java
+ChungToiClient.class:	ChungToiClient.java
+			javac ChungToiClient.java
 
-PidServer.class:	PidServer.java
-			@javac PidServer.java
+ChungToiServer.class:	ChungToiServer.java
+			javac ChungToiServer.java
+
+ChungToi.class:	ChungToi.java
+			javac ChungToi.java
+
+Player.class:	Player.java
+			javac Player.java
 
 run:			all
-			@java PidServer &
-			@sleep 1
-			@java PidClient
+			java ChungToiServer &
+			sleep 1
+			java ChungToiClient &
+			sleep 1
+			java ChungToiClient
 
 clean:
-			@rm -f *.class *~
+			rm -f *.class *~
 
 info:
-			@echo "(c) Roland Teodorowitsch (08 abr. 2015)"
+			echo "(c) Roland Teodorowitsch (08 abr. 2015)"
 

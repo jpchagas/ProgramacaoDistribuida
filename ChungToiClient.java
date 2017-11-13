@@ -73,9 +73,9 @@ public class ChungToiClient {
 					System.out.println(p.obtemTabuleiro(registro));
 					if(cp>=1) {
 						System.out.println("Faltam " + cp + " peças para distribuir antes de iniciar o jogo");
-						System.out.println("Defina uma posição para sua peça:");
+						System.out.println("Defina uma posição para sua peça: (0-8)");
 						int pos = keyboard.nextInt();
-						System.out.println("Defina orientação da sua peça: ");
+						System.out.println("Defina orientação da sua peça: (0-Perpendicular 1-Diagonal)");
 						int orient = keyboard.nextInt();
 						pecaposicionada = p.posicionaPeca(registro, pos, orient);
 						if(pecaposicionada==2) {
@@ -94,13 +94,21 @@ public class ChungToiClient {
 						
 					}else {
 						System.out.println("Mova sua peça");
-						System.out.println("Defina posição do tabuleiro onde se encontra a peça que se deseja mover:");
+						System.out.println("Defina posição do tabuleiro onde se encontra a peça que se deseja mover:(0-8)");
 						int pos = keyboard.nextInt();
-						System.out.println("Defina sentido do deslocamento: ");
+						System.out.println("Defina sentido do deslocamento: \n");
+						System.out.println("0 - Esquerda Superior");
+						System.out.println("2 - Direita Superior");
+						System.out.println("3 - Esquerda");
+						System.out.println("4 - Sem movimento");
+						System.out.println("5 - Direito");
+						System.out.println("6 - Esquerda Inferior");
+						System.out.println("7 - Baixo");
+						System.out.println("8 - Direita Inferior");
 						int sent = keyboard.nextInt();
-						System.out.println("Defina número de casas do deslocamento: ");
+						System.out.println("Defina número de casas do deslocamento:(0-2) ");
 						int numCasas = keyboard.nextInt();
-						System.out.println("Defina orientação do deslocamento: ");
+						System.out.println("Defina orientação do deslocamento: (0-Perpendicular 1-Diagonal)");
 						int orient = keyboard.nextInt();
 						p.movePeca(registro, pos,sent, numCasas, orient);
 					}
@@ -127,7 +135,7 @@ public class ChungToiClient {
 				
 			}
 			
-			
+			keyboard.close();
 			
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
