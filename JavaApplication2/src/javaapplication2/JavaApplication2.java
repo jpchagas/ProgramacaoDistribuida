@@ -32,7 +32,7 @@ public class JavaApplication2 {
             executaTeste("ChungToi-0000");
         }
     
-     private static int preRegistro(java.lang.String j1, int id1, java.lang.String j2, int id2) {
+     private static int preRegistro(String j1, int id1, String j2, int id2) {
         return port.preRegistro(j1, id1, j2, id2);
     }
     

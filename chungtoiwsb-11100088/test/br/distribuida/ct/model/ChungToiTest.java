@@ -16,6 +16,8 @@ import static org.junit.Assert.*;
  *
  * @author joao
  */
+
+
 public class ChungToiTest {
     
     public ChungToiTest() {
@@ -31,6 +33,8 @@ public class ChungToiTest {
     
     @Before
     public void setUp() {
+       
+        
     }
     
     @After
@@ -39,11 +43,12 @@ public class ChungToiTest {
 
     /**
      * Test of verificaPlayer method, of class ChungToi.
-     */
+     
     @Test
     public void testVerificaPlayer() {
         System.out.println("verificaPlayer");
         int id = 0;
+        
         ChungToi instance = new ChungToi();
         int expResult = 0;
         int result = instance.verificaPlayer(id);
@@ -51,6 +56,7 @@ public class ChungToiTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
+    * */
 
     /**
      * Test of inicializaMovimentos method, of class ChungToi.
@@ -67,7 +73,7 @@ public class ChungToiTest {
     * /
     /**
      * Test of getMyPlayer method, of class ChungToi.
-     */
+     
     @Test
     public void testGetMyPlayer() {
         System.out.println("getMyPlayer");
@@ -79,10 +85,11 @@ public class ChungToiTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
+    * */
 
     /**
      * Test of retornaPecaLinear method, of class ChungToi.
-     */
+     
     @Test
     public void testRetornaPecaLinear() {
         System.out.println("retornaPecaLinear");
@@ -94,10 +101,11 @@ public class ChungToiTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
+    * */
 
     /**
      * Test of retornaPecaDiagonal method, of class ChungToi.
-     */
+     
     @Test
     public void testRetornaPecaDiagonal() {
         System.out.println("retornaPecaDiagonal");
@@ -109,10 +117,11 @@ public class ChungToiTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
+    * */
 
     /**
      * Test of defineNewPos method, of class ChungToi.
-     */
+     
     @Test
     public void testDefineNewPos() {
         System.out.println("defineNewPos");
@@ -126,10 +135,11 @@ public class ChungToiTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
+    * */
 
     /**
      * Test of move method, of class ChungToi.
-     */
+     
     @Test
     public void testMove() {
         System.out.println("move");
@@ -143,10 +153,11 @@ public class ChungToiTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
+    * */
 
     /**
      * Test of posiciona method, of class ChungToi.
-     */
+     
     @Test
     public void testPosiciona() {
         System.out.println("posiciona");
@@ -158,10 +169,11 @@ public class ChungToiTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
+    * */
 
     /**
      * Test of minhaVez method, of class ChungToi.
-     */
+     
     @Test
     public void testMinhaVez() {
         System.out.println("minhaVez");
@@ -173,10 +185,11 @@ public class ChungToiTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
+    * */
 
     /**
      * Test of oponente method, of class ChungToi.
-     */
+     
     @Test
     public void testOponente() {
         System.out.println("oponente");
@@ -188,10 +201,11 @@ public class ChungToiTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
+    * */
 
     /**
      * Test of minhaPeca method, of class ChungToi.
-     */
+     
     @Test
     public void testMinhaPeca() {
         System.out.println("minhaPeca");
@@ -200,10 +214,11 @@ public class ChungToiTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
+    * */
 
     /**
      * Test of validaPosicao method, of class ChungToi.
-     */
+     
     @Test
     public void testValidaPosicao() {
         System.out.println("validaPosicao");
@@ -216,10 +231,11 @@ public class ChungToiTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
+    * */
 
     /**
      * Test of validaMovimento method, of class ChungToi.
-     */
+     
     @Test
     public void testValidaMovimento() {
         System.out.println("validaMovimento");
@@ -235,10 +251,11 @@ public class ChungToiTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
+    * */
 
     /**
      * Test of trocaTurno method, of class ChungToi.
-     */
+     
     @Test
     public void testTrocaTurno() {
         System.out.println("trocaTurno");
@@ -247,10 +264,11 @@ public class ChungToiTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
+    * */
 
     /**
      * Test of vencedor method, of class ChungToi.
-     */
+     
     @Test
     public void testVencedor() {
         System.out.println("vencedor");
@@ -259,10 +277,11 @@ public class ChungToiTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
+    * */
 
     /**
      * Test of getNumJogadores method, of class ChungToi.
-     */
+     
     @Test
     public void testGetNumJogadores() {
         System.out.println("getNumJogadores");
@@ -273,10 +292,11 @@ public class ChungToiTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
+    * */
 
     /**
      * Test of setNumJogadores method, of class ChungToi.
-     */
+     
     @Test
     public void testSetNumJogadores() {
         System.out.println("setNumJogadores");
@@ -286,10 +306,11 @@ public class ChungToiTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
+    * */
 
     /**
      * Test of getP1 method, of class ChungToi.
-     */
+     
     @Test
     public void testGetP1() {
         System.out.println("getP1");
@@ -300,10 +321,11 @@ public class ChungToiTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
+    * */
 
     /**
      * Test of setP1 method, of class ChungToi.
-     */
+     
     @Test
     public void testSetP1() {
         System.out.println("setP1");
@@ -313,10 +335,11 @@ public class ChungToiTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
+    * */
 
     /**
      * Test of getP2 method, of class ChungToi.
-     */
+     
     @Test
     public void testGetP2() {
         System.out.println("getP2");
@@ -327,10 +350,11 @@ public class ChungToiTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
+    * */
 
     /**
      * Test of setP2 method, of class ChungToi.
-     */
+     
     @Test
     public void testSetP2() {
         System.out.println("setP2");
@@ -340,10 +364,11 @@ public class ChungToiTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
+    * */
 
     /**
      * Test of getBoard method, of class ChungToi.
-     */
+     
     @Test
     public void testGetBoard() {
         System.out.println("getBoard");
@@ -354,10 +379,11 @@ public class ChungToiTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
+    * */
 
     /**
      * Test of printaTabuleiro method, of class ChungToi.
-     */
+     
     @Test
     public void testPrintaTabuleiro() {
         System.out.println("printaTabuleiro");
@@ -368,10 +394,11 @@ public class ChungToiTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
+    * */
 
     /**
      * Test of getTurno method, of class ChungToi.
-     */
+     
     @Test
     public void testGetTurno() {
         System.out.println("getTurno");
@@ -382,10 +409,11 @@ public class ChungToiTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
+    * */
 
     /**
      * Test of isStatusPartida method, of class ChungToi.
-     */
+     
     @Test
     public void testIsStatusPartida() {
         System.out.println("isStatusPartida");
@@ -396,10 +424,11 @@ public class ChungToiTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
+    * */
 
     /**
      * Test of setStatusPartida method, of class ChungToi.
-     */
+     
     @Test
     public void testSetStatusPartida() {
         System.out.println("setStatusPartida");
@@ -409,10 +438,11 @@ public class ChungToiTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
+    * */
 
     /**
      * Test of setTurno method, of class ChungToi.
-     */
+     
     @Test
     public void testSetTurno() {
         System.out.println("setTurno");
@@ -422,10 +452,11 @@ public class ChungToiTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
+    * */
 
     /**
      * Test of getVencedor method, of class ChungToi.
-     */
+     
     @Test
     public void testGetVencedor() {
         System.out.println("getVencedor");
@@ -436,10 +467,11 @@ public class ChungToiTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
+    * */
 
     /**
      * Test of setVencedor method, of class ChungToi.
-     */
+     
     @Test
     public void testSetVencedor() {
         System.out.println("setVencedor");
@@ -449,10 +481,11 @@ public class ChungToiTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
+    * */
 
     /**
      * Test of toString method, of class ChungToi.
-     */
+     
     @Test
     public void testToString() {
         System.out.println("toString");
@@ -463,5 +496,6 @@ public class ChungToiTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
+    * */
     
 }

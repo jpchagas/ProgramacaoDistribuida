@@ -201,4 +201,6 @@ public interface CTWebService {
         @WebParam(name = "name", targetNamespace = "")
         String name);
 
+    public int preRegistro(String j1, int id1, String j2, int id2);
+
 }

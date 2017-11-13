@@ -32,14 +32,14 @@ public class ChungToiImpl implements ChungToiInterface {
 	}
 	
 	@Override
-	public int preRegistro(int id1, String nome1, int id2, String nome2) {
-		Player p1 = new Player(id1, nome1);
-        Player p2 =  new Player(id2, nome2);            
-        players.add(p1);
-        players.add(p2);
-        ChungToi novaPartida = new ChungToi(p1,p2);
-        partidas.add(novaPartida);
-        return 0;
+	public int preRegistro(String nome1, int id1, String nome2, int id2 ) {
+            Player p1 = new Player(id1, nome1);
+            Player p2 =  new Player(id2, nome2);            
+            players.add(p1);
+            players.add(p2);
+            ChungToi novaPartida = new ChungToi(p1,p2);
+            partidas.add(novaPartida);
+            return 0;
 	}
 
 

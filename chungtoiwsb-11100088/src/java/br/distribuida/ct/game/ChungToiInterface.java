@@ -101,6 +101,6 @@ public interface ChungToiInterface {
 	 * @return      the image at the specified URL
 	 * @see		RespostaMovePecaEnum
 	 */
-	public int preRegistro(int id1, String nome1, int id2, String nome2);
+	public int preRegistro(String nome1,int id1, String nome2, int id2);
 }
 

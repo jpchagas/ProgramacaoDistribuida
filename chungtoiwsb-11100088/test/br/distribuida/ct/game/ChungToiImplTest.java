@@ -52,7 +52,7 @@ public class ChungToiImplTest {
         String nome2 = "jogador2";
         instance = new ChungToiImpl();
         int expResult = 0;
-        int result = instance.preRegistro(id1, nome1, id2, nome2);
+        int result = instance.preRegistro(nome1,id1,nome2, id2);
         assertEquals(expResult, result);
     }
     

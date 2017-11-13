@@ -88,6 +88,8 @@ public class CTWebService {
 
     /**
      * Operação de Web service
+     * @param id
+     * @param pos
      */
     @WebMethod(operationName = "movePeca")
     public int movePeca(@WebParam(name = "id") int id, @WebParam(name = "pos") int pos, @WebParam(name = "sent") int sent, @WebParam(name = "numCasas") int numCasas, @WebParam(name = "orient") int orient) {
@@ -100,9 +102,9 @@ public class CTWebService {
      * Operação de Web service
      */
     @WebMethod(operationName = "preRegistro")
-    public int preRegistro(@WebParam(name = "id1") int id1, @WebParam(name = "nome1") String nome1, @WebParam(name = "id2") int id2, @WebParam(name = "nome2") String nome2) {
+    public int preRegistro(@WebParam(name = "nome1") String nome1, @WebParam(name = "id1") int id1, @WebParam(name = "nome2") String nome2, @WebParam(name = "id2") int id2) {
         ChungToiImpl cti = new ChungToiImpl();
-        return cti.preRegistro(id1, nome1, id2, nome2);
+        return cti.preRegistro(nome1, id1, nome2,id2);
         
     }
 
