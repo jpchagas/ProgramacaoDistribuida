@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://joao-inspiron-7460:8080/chungtoiwsb-11100088/CTWebService?wsdl" uri="xml-resources/web-service-references/CTWebService/wsdl/joao-inspiron-7460_8080/chungtoiwsb-11100088/CTWebService.wsdl"/>
+    <system systemId="http://joao-inspiron-7460:8080/chungtoiwsb-11100088/CTWebService?xsd=1" uri="xml-resources/web-service-references/CTWebService/wsdl/joao-inspiron-7460_8080/chungtoiwsb-11100088/CTWebService.xsd_1.xsd"/>
+</catalog>
