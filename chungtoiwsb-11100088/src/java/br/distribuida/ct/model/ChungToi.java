@@ -307,8 +307,8 @@ public class ChungToi {
 	}
 	
 
-	public int getVencedor() {
-		return vencedor;
+	public boolean getVencedor(int id) {
+		return (verificaPlayer(id)==vencedor)? true:false;
 	}
 
 	public void setVencedor(int vencedor) {

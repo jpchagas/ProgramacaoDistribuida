@@ -16,10 +16,10 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="id1" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="nome1" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="id2" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="id1" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="nome2" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="id2" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -30,33 +30,17 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "preRegistro", propOrder = {
-    "id1",
     "nome1",
-    "id2",
-    "nome2"
+    "id1",
+    "nome2",
+    "id2"
 })
 public class PreRegistro {
 
-    protected int id1;
     protected String nome1;
-    protected int id2;
+    protected int id1;
     protected String nome2;
-
-    /**
-     * Obtém o valor da propriedade id1.
-     * 
-     */
-    public int getId1() {
-        return id1;
-    }
-
-    /**
-     * Define o valor da propriedade id1.
-     * 
-     */
-    public void setId1(int value) {
-        this.id1 = value;
-    }
+    protected int id2;
 
     /**
      * Obtém o valor da propriedade nome1.
@@ -83,19 +67,19 @@ public class PreRegistro {
     }
 
     /**
-     * Obtém o valor da propriedade id2.
+     * Obtém o valor da propriedade id1.
      * 
      */
-    public int getId2() {
-        return id2;
+    public int getId1() {
+        return id1;
     }
 
     /**
-     * Define o valor da propriedade id2.
+     * Define o valor da propriedade id1.
      * 
      */
-    public void setId2(int value) {
-        this.id2 = value;
+    public void setId1(int value) {
+        this.id1 = value;
     }
 
     /**
@@ -120,6 +104,22 @@ public class PreRegistro {
      */
     public void setNome2(String value) {
         this.nome2 = value;
+    }
+
+    /**
+     * Obtém o valor da propriedade id2.
+     * 
+     */
+    public int getId2() {
+        return id2;
+    }
+
+    /**
+     * Define o valor da propriedade id2.
+     * 
+     */
+    public void setId2(int value) {
+        this.id2 = value;
     }
 
 }

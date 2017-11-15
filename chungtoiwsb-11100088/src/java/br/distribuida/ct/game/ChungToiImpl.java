@@ -21,7 +21,9 @@ public class ChungToiImpl implements ChungToiInterface {
 	private static final int numMaxPartidas = 500;
 	private static final int numMaxPlayers = 1000;
 	private ArrayList<ChungToi> partidas;
+        private ArrayList<ChungToi> prePartidas;
 	private ArrayList<Player> players;
+        private ArrayList<Player> prePlayers;
 	private int id = 0;
 	private Player aguardando = null;
 		
@@ -29,16 +31,18 @@ public class ChungToiImpl implements ChungToiInterface {
 	public ChungToiImpl() {
 		partidas = new ArrayList<ChungToi>(numMaxPartidas);
 		players = new ArrayList<Player>(numMaxPlayers);
+                prePartidas = new ArrayList<ChungToi>(numMaxPartidas);
+		prePlayers = new ArrayList<Player>(numMaxPlayers);
 	}
 	
 	@Override
 	public int preRegistro(String nome1, int id1, String nome2, int id2 ) {
             Player p1 = new Player(id1, nome1);
             Player p2 =  new Player(id2, nome2);            
-            players.add(p1);
-            players.add(p2);
+            prePlayers.add(p1);
+            prePlayers.add(p2);
             ChungToi novaPartida = new ChungToi(p1,p2);
-            partidas.add(novaPartida);
+            prePartidas.add(novaPartida);
             return 0;
 	}
 
@@ -49,6 +53,10 @@ public class ChungToiImpl implements ChungToiInterface {
 			return RespostasRegistraJogadorEnum.NumeroMaximoJogadoresAtingido.getValor();
 		} else if(verificaNomeRepetido(nome)){
 			return RespostasRegistraJogadorEnum.UsuárioJaCadastrado.getValor();
+		}else if(getPlayerPre(nome)!=-99){
+                        Player newPlayer =  new Player(getPlayerPre(nome),nome);
+			players.add(newPlayer);
+			return getPlayerPre(nome);
 		}else {
 			int id = generateId();
 			Player newPlayer =  new Player(id,nome);
@@ -107,16 +115,15 @@ public class ChungToiImpl implements ChungToiInterface {
 	@Override
 	public int ehMinhaVez(int id) {
 		ChungToi ct = buscaPartidaJogador(id);
-		int qual_player = ct.verificaPlayer(id);
+		//int qual_player = ct.verificaPlayer(id);
 		
-		ct.vencedor();
+		//ct.vencedor();
 
-		if(ct.getP1()==null || ct.getP2()==null) {
-			
+		if(aguardando.getId()==id) {
 			return RespostasMinhaVezEnum.NaoHaDoisJogadores.getValor();
-		}else if(ct.getVencedor()==qual_player){
+		}else if(ct.getVencedor(id)){
 			return RespostasMinhaVezEnum.Vencedor.getValor();
-		}else if(ct.getVencedor()!=qual_player && ct.getVencedor()!=0){
+		}else if(!(ct.getVencedor(id))){
 			return RespostasMinhaVezEnum.Perdedor.getValor();
 		}else if(ct.getP1().getId() == id && ct.getTurno()==1 || ct.getP2().getId() == id && ct.getTurno()==2){
 			return RespostasMinhaVezEnum.Sim.getValor();
@@ -124,9 +131,9 @@ public class ChungToiImpl implements ChungToiInterface {
 			return RespostasMinhaVezEnum.Nao.getValor();
 		}else if(false){
 			return RespostasMinhaVezEnum.Empate.getValor();
-		}else if(ct.isPartidaEncerrada() && ct.getVencedor()==id){
+		}else if(ct.isPartidaEncerrada() && ct.getVencedor(id)){
 			return RespostasMinhaVezEnum.VencedorWO.getValor();
-		}else if(ct.isPartidaEncerrada() && ct.getVencedor()!=id){
+		}else if(ct.isPartidaEncerrada() && !(ct.getVencedor(id))){
 			return RespostasMinhaVezEnum.PerdedorWO.getValor();
 		}else {
 			return RespostasMinhaVezEnum.Erro.getValor();
@@ -141,7 +148,7 @@ public class ChungToiImpl implements ChungToiInterface {
 			return partida.oponente(id);
 		}
 		//Retorna vazio se não tem partida
-		return null;
+		return "";
 	}
 
 	@Override
@@ -254,6 +261,27 @@ public class ChungToiImpl implements ChungToiInterface {
 		}
 		return null;
 	}
+        
+        private int getPlayerPre(String nome){
+            for (Player p : prePlayers) {
+			if(p.getNome().equals(nome))return p.getId();
+		}
+		return -99;
+        }
+        
+        private boolean findPlayerById(int id){
+            for (Player p : players) {
+			if(p.getId()==id)return true;
+		}
+		return false;
+        }
+        
+        private boolean findPlayerByName(String nome){
+            for (Player p : players) {
+			if(p.getNome().equals(nome))return true;
+		}
+		return false;
+        }
 	
 	//Busca partida com vaga para jogador
 	private ChungToi buscaPartida() {

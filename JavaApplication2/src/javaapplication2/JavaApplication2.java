@@ -12,6 +12,8 @@ import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -28,7 +30,7 @@ public class JavaApplication2 {
         public static void main(String[] args) throws IOException {
             // TODO code application logic here
             CTWebService_Service ctwer = new CTWebService_Service();
-            CTWebService port = ctwer.getCTWebServicePort();
+            port = ctwer.getCTWebServicePort();
             executaTeste("ChungToi-0000");
         }
     
@@ -50,13 +52,14 @@ public class JavaApplication2 {
                 System.out.print("\r"+rad+": "+(i+1)+"/"+numOp);
                 int op = leitura.nextInt();
                 String parametros = leitura.next();
-                String param[] = parametros.split(":",-1);
+                String[] param = parametros.split(":",-1);
                 switch(op) {
                     case 0:
                         if (param.length!=4)
                             erro(inFile,i+1);
                         else
                             out.println(port.preRegistro(param[0],Integer.parseInt(param[1]),param[2],Integer.parseInt(param[3])));
+                        
                         break;
                     case 1:
                         if (param.length!=1)

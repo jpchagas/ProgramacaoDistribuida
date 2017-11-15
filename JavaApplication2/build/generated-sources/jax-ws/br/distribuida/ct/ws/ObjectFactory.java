@@ -39,11 +39,9 @@ public class ObjectFactory {
     private final static QName _EhMinhaVezResponse_QNAME = new QName("http://ws.ct.distribuida.br/", "ehMinhaVezResponse");
     private final static QName _EncerraPartidaResponse_QNAME = new QName("http://ws.ct.distribuida.br/", "encerraPartidaResponse");
     private final static QName _ObtemTabuleiro_QNAME = new QName("http://ws.ct.distribuida.br/", "obtemTabuleiro");
-    private final static QName _Hello_QNAME = new QName("http://ws.ct.distribuida.br/", "hello");
     private final static QName _PreRegistroResponse_QNAME = new QName("http://ws.ct.distribuida.br/", "preRegistroResponse");
     private final static QName _TemPartidaResponse_QNAME = new QName("http://ws.ct.distribuida.br/", "temPartidaResponse");
     private final static QName _PosicionaPeca_QNAME = new QName("http://ws.ct.distribuida.br/", "posicionaPeca");
-    private final static QName _HelloResponse_QNAME = new QName("http://ws.ct.distribuida.br/", "helloResponse");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: br.distribuida.ct.ws
@@ -181,27 +179,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link HelloResponse }
-     * 
-     */
-    public HelloResponse createHelloResponse() {
-        return new HelloResponse();
-    }
-
-    /**
      * Create an instance of {@link PosicionaPeca }
      * 
      */
     public PosicionaPeca createPosicionaPeca() {
         return new PosicionaPeca();
-    }
-
-    /**
-     * Create an instance of {@link Hello }
-     * 
-     */
-    public Hello createHello() {
-        return new Hello();
     }
 
     /**
@@ -348,15 +330,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Hello }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://ws.ct.distribuida.br/", name = "hello")
-    public JAXBElement<Hello> createHello(Hello value) {
-        return new JAXBElement<Hello>(_Hello_QNAME, Hello.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link PreRegistroResponse }{@code >}}
      * 
      */
@@ -381,15 +354,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://ws.ct.distribuida.br/", name = "posicionaPeca")
     public JAXBElement<PosicionaPeca> createPosicionaPeca(PosicionaPeca value) {
         return new JAXBElement<PosicionaPeca>(_PosicionaPeca_QNAME, PosicionaPeca.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link HelloResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://ws.ct.distribuida.br/", name = "helloResponse")
-    public JAXBElement<HelloResponse> createHelloResponse(HelloResponse value) {
-        return new JAXBElement<HelloResponse>(_HelloResponse_QNAME, HelloResponse.class, null, value);
     }
 
 }

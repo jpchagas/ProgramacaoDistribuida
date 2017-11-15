@@ -162,14 +162,14 @@ public interface CTWebService {
     @ResponseWrapper(localName = "preRegistroResponse", targetNamespace = "http://ws.ct.distribuida.br/", className = "br.distribuida.ct.ws.PreRegistroResponse")
     @Action(input = "http://ws.ct.distribuida.br/CTWebService/preRegistroRequest", output = "http://ws.ct.distribuida.br/CTWebService/preRegistroResponse")
     public int preRegistro(
-        @WebParam(name = "id1", targetNamespace = "")
-        int id1,
         @WebParam(name = "nome1", targetNamespace = "")
         String nome1,
-        @WebParam(name = "id2", targetNamespace = "")
-        int id2,
+        @WebParam(name = "id1", targetNamespace = "")
+        int id1,
         @WebParam(name = "nome2", targetNamespace = "")
-        String nome2);
+        String nome2,
+        @WebParam(name = "id2", targetNamespace = "")
+        int id2);
 
     /**
      * 
@@ -185,20 +185,5 @@ public interface CTWebService {
     public int ehMinhaVez(
         @WebParam(name = "id", targetNamespace = "")
         int id);
-
-    /**
-     * 
-     * @param name
-     * @return
-     *     returns java.lang.String
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "hello", targetNamespace = "http://ws.ct.distribuida.br/", className = "br.distribuida.ct.ws.Hello")
-    @ResponseWrapper(localName = "helloResponse", targetNamespace = "http://ws.ct.distribuida.br/", className = "br.distribuida.ct.ws.HelloResponse")
-    @Action(input = "http://ws.ct.distribuida.br/CTWebService/helloRequest", output = "http://ws.ct.distribuida.br/CTWebService/helloResponse")
-    public String hello(
-        @WebParam(name = "name", targetNamespace = "")
-        String name);
 
 }
