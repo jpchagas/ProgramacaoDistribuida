@@ -22,14 +22,12 @@ public class ChungToi {
 	//private timer
 	
 	
-	public ChungToi(Player np1, Player np2) {
+	public ChungToi() {
             turno = 1;
             numJogadores = 0;
             vencedor = 0;
             moves = new int [9][9][2];
             buildMoves();
-            p1 = np1;
-            p2 = np2;
             partidaNaoIniciada = true;
             partidaEncerrada = false;
 	}
@@ -75,6 +73,16 @@ public class ChungToi {
 			return p1.getNome();
 		}
 	}
+        
+        public boolean jogadorNaPartida(int id){
+            if(p1.getId()==id){
+                return true;
+            }else if(p2.getId()==id){
+                return true;
+            }else{
+                return false;
+            }
+        }
 		
 	/*
 	 * 
@@ -107,10 +115,10 @@ public class ChungToi {
 	}
 	
 	public String printaTabuleiro() {
-		String sboard = "Mapa:\n";
+		String sboard ="";
 		for (int i = 0; i < 9; i++) {
 			if(i==2 || i==5) {
-				sboard += board[i] + "\n"; 
+				sboard += board[i]; 
 			}else {
 				sboard += board[i];
 			}
@@ -263,6 +271,11 @@ public class ChungToi {
 			return (board[pos].equals("E")||board[pos].equals("e"))? true:false;
 		}
 	}
+
+    @Override
+    public String toString() {
+        return "ChungToi{" + "numJogadores=" + numJogadores + ", turno=" + turno + ", vencedor=" + vencedor + ", p1=" + p1 + ", p2=" + p2 + ", board=" + board + ", partidaNaoIniciada=" + partidaNaoIniciada + ", partidaEncerrada=" + partidaEncerrada + '}';
+    }
 	
 	/*
 	 * Getters e Setters

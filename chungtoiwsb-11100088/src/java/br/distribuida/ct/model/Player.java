@@ -12,7 +12,6 @@ package br.distribuida.ct.model;
 public class Player {
 	private int id;
 	private String nome;
-	private String cor;
 	
 	public Player(int id, String nome) {
 		this.id = id;
@@ -35,13 +34,6 @@ public class Player {
 		this.nome = nome;
 	}
 
-	public String getCor() {
-		return cor;
-	}
-
-	public void setCor(String cor) {
-		this.cor = cor;
-	}
 
 	@Override
 	public String toString() {

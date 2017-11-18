@@ -92,33 +92,6 @@ public class PlayerTest {
     }
 
     /**
-     * Test of getCor method, of class Player.
-     */
-    @Test
-    public void testGetCor() {
-        System.out.println("getCor");
-        Player instance = null;
-        String expResult = "";
-        String result = instance.getCor();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setCor method, of class Player.
-     */
-    @Test
-    public void testSetCor() {
-        System.out.println("setCor");
-        String cor = "";
-        Player instance = null;
-        instance.setCor(cor);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
      * Test of toString method, of class Player.
      */
     @Test
