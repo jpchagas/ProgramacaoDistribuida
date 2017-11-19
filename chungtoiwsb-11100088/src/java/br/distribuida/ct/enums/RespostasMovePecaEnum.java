@@ -10,10 +10,12 @@ package br.distribuida.ct.enums;
  * @author joao
  */
 public enum RespostasMovePecaEnum {
-
-	NaoEVez(-3),
+        
+        AindaNaoForamPosicionadas3Pecas(-5),
+	NaoEVez(-4),
+        ParametrosInvalidos(-3),
 	PartidaNaoIniciada(-2),
-	ParâmetrosInválidos(-1),
+	JogadorNaoEncontrado(-1),
 	MovimentoInvalido(0),
 	TudoCerto(1),
 	PartidaEncerrada(2);

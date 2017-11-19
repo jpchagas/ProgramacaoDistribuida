@@ -31,7 +31,8 @@ public class JavaApplication2 {
             // TODO code application logic here
             CTWebService_Service ctwer = new CTWebService_Service();
             port = ctwer.getCTWebServicePort();
-            executaTeste("ChungToi-0000");
+            //executaTeste("ChungToi-0000");
+            executaTeste("ChungToi-0100");
         }
     
      private static int preRegistro(String j1, int id1, String j2, int id2) {

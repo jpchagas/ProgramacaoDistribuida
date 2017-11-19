@@ -14,12 +14,11 @@ import br.distribuida.ct.enums.*;
  */
 public class ChungToi {
 	
-	private int numJogadores, turno, vencedor;
+	private int numJogadores, turno, vencedor,pecasP1,pecasP2;
 	private Player p1,p2;
 	private String[] board = { ".", ".", "." , ".", ".", ".", ".", ".", "."};
 	private static int[][][] moves;
 	private boolean partidaNaoIniciada , partidaEncerrada;
-	//private timer
 	
 	
 	public ChungToi() {
@@ -30,12 +29,16 @@ public class ChungToi {
             buildMoves();
             partidaNaoIniciada = true;
             partidaEncerrada = false;
+            pecasP1 = 3;
+            pecasP2 = 3;
 	}
 	
 	public void move(int id, int pos,int sent, int numCasas, int orient) {
 		int i = findNewPos(pos, sent, numCasas);
 		board[i]=(orient==0) ? retornaPecaLinear(id) : retornaPecaDiagonal(id);
-		board[pos]= ".";
+                if(sent!=4){
+                    board[pos]= ".";
+                }
 	}
 	
 	public void posiciona(int pos,int orient,int id) {
@@ -92,7 +95,12 @@ public class ChungToi {
 	 * */
 	
 	public int findNewPos(int pos, int sent, int numCasas) {
-		return moves[pos][sent][numCasas-1];
+                //System.out.println("Procurando Novo Movimento");
+                if(numCasas==0){
+                    return moves[pos][sent][numCasas];
+                }else{
+                    return moves[pos][sent][numCasas-1];
+                }
 	}
 	
 	public boolean validaParametrosPosicionaPeca(int pos, int orient){
@@ -107,10 +115,10 @@ public class ChungToi {
 			System.out.println("Parâmetros de Entrada Inválidos");
 			return true;
 		}
-		if(!(minhaPeca(id, pos))) {
-			System.out.println("Não é minha peça");
-			return true;
-		}
+//		if(!(minhaPeca(id, pos))) {
+//			System.out.println("Não é minha peça");
+//			return true;
+//		}
 		return false;
 	}
 	
@@ -142,50 +150,66 @@ public class ChungToi {
 		if(lwa[0].equals(lwa[1]) && lwa[1].equals(lwa[2])){
 			if(lwa[0].equals("c")) {
 				 setVencedor(1);
+                                 setPartidaEncerrada(true);
 			}else if(lwa[0].equals("e")) {
 				 setVencedor(2);
+                                 setPartidaEncerrada(true);
 			}
 		}else if(lwa[3].equals(lwa[4]) && lwa[4].equals(lwa[5])) {
 			if(lwa[3].equals("c")) {
 				 setVencedor(1);
+                                 setPartidaEncerrada(true);
 			}else if(lwa[3].equals("e")) {
 				 setVencedor(2);
+                                 setPartidaEncerrada(true);
 			}
 		}else if(lwa[6].equals(lwa[7]) && lwa[7].equals(lwa[8])) {
 			if(lwa[6].equals("c") ) {
 				 setVencedor(1);
+                                 setPartidaEncerrada(true);
 			}else if(lwa[6].equals("e")) {
 				 setVencedor(2);
+                                 setPartidaEncerrada(true);
 			}
 		}else if(lwa[0].equals(lwa[4]) && lwa[4].equals(lwa[8])) {
 			if(lwa[0].equals("c")) {
 				 setVencedor(1);
+                                 setPartidaEncerrada(true);
 			}else if(lwa[0].equals("e")) {
 				 setVencedor(2);
+                                 setPartidaEncerrada(true);
 			}
 		}else if(lwa[2].equals(lwa[4]) && lwa[4].equals(lwa[6])) {
 			if(lwa[2].equals("c")) {
 				 setVencedor(1);
+                                 setPartidaEncerrada(true);
 			}else if(lwa[2].equals("e")) {
 				 setVencedor(2);
+                                 setPartidaEncerrada(true);
 			}
 		}else if(lwa[0].equals(lwa[3]) && lwa[3].equals(lwa[6])) {
 			if(lwa[0].equals("c")) {
 				setVencedor(1);
+                                setPartidaEncerrada(true);
 			}else if(lwa[0].equals("e") ) {
 				 setVencedor(2);
+                                 setPartidaEncerrada(true);
 			}
 		}else if(lwa[1].equals(lwa[4]) && lwa[4].equals(lwa[7])) {
 			if(lwa[1].equals("c") ) {
 				 setVencedor(1);
+                                 setPartidaEncerrada(true);
 			}else if(lwa[1].equals("e") ) {
 				 setVencedor(2);
+                                 setPartidaEncerrada(true);
 			}
 		}else if(lwa[2].equals(lwa[5]) && lwa[5].equals(lwa[8])) {
 			if(lwa[2].equals("c") ) {
 				 setVencedor(1);
+                                 setPartidaEncerrada(true);
 			}else if(lwa[2].equals("e")) {
 				 setVencedor(2);
+                                 setPartidaEncerrada(true);
 			}
 		}
 	}
@@ -198,12 +222,12 @@ public class ChungToi {
 	 * @see		RespostaRegistraJogadorEnum
 	 */
 	public void trocaTurno() {
-		System.out.println("Turno: " + turno);
+		//System.out.println("Turno: " + turno);
 		if(turno==1) {
-			System.out.println("Era o turno do primeiro e troquei pro segundo");
+			//System.out.println("Era o turno do primeiro e troquei pro segundo");
 			setTurno(2);
 		}else if(turno==2){
-			System.out.println("Era o turno do segundo e troquei pro primeiro");
+			//System.out.println("Era o turno do segundo e troquei pro primeiro");
 			setTurno(1);
 		}
 	}
@@ -227,10 +251,22 @@ public class ChungToi {
 				return true;
 			}
 		}
-		if (!(board[findNewPos(pos, sent, numCasas)].equals("."))) {
+                if(findNewPos(pos, sent, numCasas)==-1){
+                    return true;
+                }
+                
+		if (!(board[findNewPos(pos, sent, numCasas)].equals("."))&&sent!=4) {
+                        System.out.println(id + "" +pos + "" +sent+ "" +numCasas+ ""+orient);
 			System.out.println("Posição não vazia");
 			return true;
 		}
+                if(!(minhaPeca(id, pos))) {
+			System.out.println("Não é minha peça");
+			return true;
+		}
+                
+                
+                
 		return false;
 	}
 	
@@ -282,6 +318,24 @@ public class ChungToi {
 	 * 
 	 * 
 	 * */
+
+    public int getPecasP1() {
+        return pecasP1;
+    }
+
+    public void setPecasP1(int pecasP1) {
+        this.pecasP1 = pecasP1;
+    }
+
+    public int getPecasP2() {
+        return pecasP2;
+    }
+
+    public void setPecasP2(int pecasP2) {
+        this.pecasP2 = pecasP2;
+    }
+    
+    
 	
 	public int getNumJogadores(){
 		return numJogadores;
@@ -321,7 +375,8 @@ public class ChungToi {
 	
 
 	public boolean getVencedor(int id) {
-		return (verificaPlayer(id)==vencedor)? true:false;
+		
+            return (verificaPlayer(id)==vencedor)? true:false;
 	}
 
 	public void setVencedor(int vencedor) {

@@ -11,10 +11,12 @@ package br.distribuida.ct.enums;
  */
 public enum RespostasPosicionaPecaEnum {
 
-	NaoEVez(-3),
+	FasePosicionamentoEncerrada(-5),
+        NaoEVez(-4),
+        ParametrosInvalidos(-3),
 	PartidaNaoIniciada(-2),
-	ParâmetrosInválidos(-1),
-	PosicaoInvalida(0),
+	JogadorNaoEncontrado(-1),
+	PosicaoOcupada(0),
 	TudoCerto(1),
 	PartidaEncerrada(2);
 	

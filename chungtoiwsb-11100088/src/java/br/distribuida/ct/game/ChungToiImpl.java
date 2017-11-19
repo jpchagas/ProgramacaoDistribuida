@@ -254,7 +254,7 @@ public class ChungToiImpl implements ChungToiInterface {
 		//int qual_player = ct.verificaPlayer(id);
 		
 		ct.vencedor();
-
+                
 		if(aguardando.contains(getPlayer(id))) {
 			return RespostasMinhaVezEnum.NaoHaDoisJogadores.getValor();
 		}else if(ct.getVencedor(id) && ct.isPartidaEncerrada()){
@@ -322,7 +322,7 @@ public class ChungToiImpl implements ChungToiInterface {
 	public int  posicionaPeca(int id, int pos, int orient) {
             //System.out.print("Posicionando Peça");
 		ChungToi ct = buscaPartidaJogador(id);
-				
+		int my_player = ct.verificaPlayer(id);
 		if(ct.isPartidaEncerrada()) {
 			return RespostasPosicionaPecaEnum.PartidaEncerrada.getValor();
 		
@@ -333,12 +333,24 @@ public class ChungToiImpl implements ChungToiInterface {
 			return RespostasPosicionaPecaEnum.NaoEVez.getValor();
 			
 		}else if(ct.validaParametrosPosicionaPeca(pos,orient)) {
-			return RespostasPosicionaPecaEnum.ParâmetrosInválidos.getValor();
+			return RespostasPosicionaPecaEnum.ParametrosInvalidos.getValor();
 			
 		}else if(ct.validaPosicao(pos)) {
-			return RespostasPosicionaPecaEnum.PosicaoInvalida.getValor();
-			
+			return RespostasPosicionaPecaEnum.PosicaoOcupada.getValor();
+                
+                }else if((my_player==1 && ct.getPecasP1()==0) ||(my_player==2 && ct.getPecasP2()==0)) {
+                    //TODO:
+			return RespostasPosicionaPecaEnum.FasePosicionamentoEncerrada.getValor();
+                        
+                }else if(getPlayer(id)==null) {
+                    //TODO:
+			return RespostasPosicionaPecaEnum.JogadorNaoEncontrado.getValor();	
 		}else {
+                        if(my_player==1){
+                            ct.setPecasP1(ct.getPecasP1()-1);
+                        }else{
+                            ct.setPecasP2(ct.getPecasP2()-1);
+                        }
 			ct.posiciona(pos, orient, id);
 			ct.trocaTurno();
 			return RespostasPosicionaPecaEnum.TudoCerto.getValor();
@@ -350,33 +362,36 @@ public class ChungToiImpl implements ChungToiInterface {
 	public int movePeca(int id, int pos,int sent, int numCasas, int orient) {
             //System.out.print("Movendo Peça");
 		ChungToi ct = buscaPartidaJogador(id);
+                int my_player = ct.verificaPlayer(id);
 		if(ct.isPartidaEncerrada()) {
-		//	System.out.println("Partida Encerrada");
 			return RespostasMovePecaEnum.PartidaEncerrada.getValor();
 		
 		}else if(ct.isPartidaNaoIniciada()) {
-		//	System.out.println("Partida Não Iniciada");
 			return RespostasMovePecaEnum.PartidaNaoIniciada.getValor();
 			
 		}else if(ehMinhaVez(id)==0) {
-		//	System.out.println("Não é a vez");
 			return RespostasMovePecaEnum.NaoEVez.getValor();
 			
 		}else if(ct.validaParametrosMovePeca(id,pos,sent, numCasas,orient)) {
-		//	System.out.println("Parâmetros inválidos");
-			return RespostasMovePecaEnum.ParâmetrosInválidos.getValor();
+                    System.out.println("Parâmetro Inválido");
+                    return RespostasMovePecaEnum.ParametrosInvalidos.getValor();
 			
 		}else if(ct.validaMovimento(id,pos,sent, numCasas, orient)) {
-		//	System.out.println("Movimento válido");
-			return RespostasMovePecaEnum.MovimentoInvalido.getValor();
+                    System.out.println("Movimento Inválido");
+                    return RespostasMovePecaEnum.MovimentoInvalido.getValor();
+                
+                }else if((my_player==1 && ct.getPecasP1()>0)||(my_player==2 && ct.getPecasP2()>0)) {
+                    return RespostasMovePecaEnum.AindaNaoForamPosicionadas3Pecas.getValor();
+                
+                }else if(getPlayer(id)==null) {
+                    return RespostasMovePecaEnum.JogadorNaoEncontrado.getValor();
 				
 		}else {
-			ct.move(id, pos, sent, numCasas, orient);
-		//	System.out.println("Movimento executado");
-			ct.trocaTurno();
-		//	System.out.println("Troquei turno");
-			System.out.println(RespostasMovePecaEnum.TudoCerto.getValor());
-			return RespostasMovePecaEnum.TudoCerto.getValor();
+                    //System.out.println("Executando Movimento");
+                    //System.out.println(id+" "+pos+" "+sent+" "+numCasas+" "+orient);
+                    ct.move(id, pos, sent, numCasas, orient);
+                    ct.trocaTurno();
+                    return RespostasMovePecaEnum.TudoCerto.getValor();
 		}
 	}
 	
