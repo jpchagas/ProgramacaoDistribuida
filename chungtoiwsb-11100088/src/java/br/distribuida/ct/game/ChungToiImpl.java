@@ -37,7 +37,7 @@ public class ChungToiImpl implements ChungToiInterface {
 	}
 	
 	@Override
-	public int preRegistro(String nome1, int id1, String nome2, int id2 ) {
+	public synchronized int preRegistro(String nome1, int id1, String nome2, int id2 ) {
             //System.out.print("Efetuando Pré Registro");
             Player p1 = new Player(id1, nome1);
             //System.out.print("Pré Registrando Jogador " +p1.toString());
@@ -251,17 +251,16 @@ public class ChungToiImpl implements ChungToiInterface {
 	public int ehMinhaVez(int id) {
             //System.out.print("Verificando Vez");
 		ChungToi ct = buscaPartidaJogador(id);
-		//int qual_player = ct.verificaPlayer(id);
-		
+//		int qual_player = ct.verificaPlayer(id);
 		ct.vencedor();
                 
 		if(aguardando.contains(getPlayer(id))) {
 			return RespostasMinhaVezEnum.NaoHaDoisJogadores.getValor();
 		}else if(ct.getVencedor(id) && ct.isPartidaEncerrada()){
 			return RespostasMinhaVezEnum.Vencedor.getValor();
-		}else if(!(ct.getVencedor(id))&&ct.isPartidaEncerrada()){
+		}else if(!(ct.getVencedor(id)) && ct.isPartidaEncerrada()){
 			return RespostasMinhaVezEnum.Perdedor.getValor();
-		}else if((ct.getP1().getId() == id && ct.getTurno()==1) || (ct.getP2().getId() == id && ct.getTurno()==2)){
+		}else if((ct.getP1().getId() == id && ct.getTurno()==1 ) || (ct.getP2().getId() == id && ct.getTurno()==2)){
 			return RespostasMinhaVezEnum.Sim.getValor();
 		}else if(ct.getP1().getId() == id && ct.getTurno()==2 || ct.getP2().getId() == id && ct.getTurno()==1){
 			return RespostasMinhaVezEnum.Nao.getValor();
@@ -322,6 +321,7 @@ public class ChungToiImpl implements ChungToiInterface {
 	public int  posicionaPeca(int id, int pos, int orient) {
             //System.out.print("Posicionando Peça");
 		ChungToi ct = buscaPartidaJogador(id);
+                
 		int my_player = ct.verificaPlayer(id);
 		if(ct.isPartidaEncerrada()) {
 			return RespostasPosicionaPecaEnum.PartidaEncerrada.getValor();

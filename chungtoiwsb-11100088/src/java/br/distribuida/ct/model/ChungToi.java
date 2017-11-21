@@ -147,7 +147,7 @@ public class ChungToi {
 			lwa[i] = board[i].toLowerCase();
 		}
 		
-		if(lwa[0].equals(lwa[1]) && lwa[1].equals(lwa[2])){
+		if(lwa[0].equals(lwa[1]) && lwa[1].equals(lwa[2])&&!(lwa[0].equals("."))){
 			if(lwa[0].equals("c")) {
 				 setVencedor(1);
                                  setPartidaEncerrada(true);
@@ -155,7 +155,7 @@ public class ChungToi {
 				 setVencedor(2);
                                  setPartidaEncerrada(true);
 			}
-		}else if(lwa[3].equals(lwa[4]) && lwa[4].equals(lwa[5])) {
+		}else if(lwa[3].equals(lwa[4]) && lwa[4].equals(lwa[5])&&!(lwa[3].equals("."))) {
 			if(lwa[3].equals("c")) {
 				 setVencedor(1);
                                  setPartidaEncerrada(true);
@@ -163,7 +163,7 @@ public class ChungToi {
 				 setVencedor(2);
                                  setPartidaEncerrada(true);
 			}
-		}else if(lwa[6].equals(lwa[7]) && lwa[7].equals(lwa[8])) {
+		}else if(lwa[6].equals(lwa[7]) && lwa[7].equals(lwa[8])&&!(lwa[6].equals("."))) {
 			if(lwa[6].equals("c") ) {
 				 setVencedor(1);
                                  setPartidaEncerrada(true);
@@ -171,7 +171,7 @@ public class ChungToi {
 				 setVencedor(2);
                                  setPartidaEncerrada(true);
 			}
-		}else if(lwa[0].equals(lwa[4]) && lwa[4].equals(lwa[8])) {
+		}else if(lwa[0].equals(lwa[4]) && lwa[4].equals(lwa[8])&&!(lwa[0].equals("."))) {
 			if(lwa[0].equals("c")) {
 				 setVencedor(1);
                                  setPartidaEncerrada(true);
@@ -179,7 +179,7 @@ public class ChungToi {
 				 setVencedor(2);
                                  setPartidaEncerrada(true);
 			}
-		}else if(lwa[2].equals(lwa[4]) && lwa[4].equals(lwa[6])) {
+		}else if(lwa[2].equals(lwa[4]) && lwa[4].equals(lwa[6])&&!(lwa[2].equals("."))) {
 			if(lwa[2].equals("c")) {
 				 setVencedor(1);
                                  setPartidaEncerrada(true);
@@ -187,7 +187,7 @@ public class ChungToi {
 				 setVencedor(2);
                                  setPartidaEncerrada(true);
 			}
-		}else if(lwa[0].equals(lwa[3]) && lwa[3].equals(lwa[6])) {
+		}else if(lwa[0].equals(lwa[3]) && lwa[3].equals(lwa[6])&&!(lwa[0].equals("."))) {
 			if(lwa[0].equals("c")) {
 				setVencedor(1);
                                 setPartidaEncerrada(true);
@@ -195,7 +195,7 @@ public class ChungToi {
 				 setVencedor(2);
                                  setPartidaEncerrada(true);
 			}
-		}else if(lwa[1].equals(lwa[4]) && lwa[4].equals(lwa[7])) {
+		}else if(lwa[1].equals(lwa[4]) && lwa[4].equals(lwa[7])&&!(lwa[1].equals("."))) {
 			if(lwa[1].equals("c") ) {
 				 setVencedor(1);
                                  setPartidaEncerrada(true);
@@ -203,10 +203,10 @@ public class ChungToi {
 				 setVencedor(2);
                                  setPartidaEncerrada(true);
 			}
-		}else if(lwa[2].equals(lwa[5]) && lwa[5].equals(lwa[8])) {
+		}else if(lwa[2].equals(lwa[5]) && lwa[5].equals(lwa[8])&&!(lwa[2].equals("."))) {
 			if(lwa[2].equals("c") ) {
-				 setVencedor(1);
-                                 setPartidaEncerrada(true);
+                            setVencedor(1);
+                            setPartidaEncerrada(true);
 			}else if(lwa[2].equals("e")) {
 				 setVencedor(2);
                                  setPartidaEncerrada(true);
@@ -375,7 +375,6 @@ public class ChungToi {
 	
 
 	public boolean getVencedor(int id) {
-		
             return (verificaPlayer(id)==vencedor)? true:false;
 	}
 
