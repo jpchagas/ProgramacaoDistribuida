@@ -377,7 +377,7 @@ public class ChungToiImpl implements ChungToiInterface {
                     return RespostasMovePecaEnum.ParametrosInvalidos.getValor();
 			
 		}else if(ct.validaMovimento(id,pos,sent, numCasas, orient)) {
-                    System.out.println("Movimento Inválido");
+                    if(id==101 && pos==6 && sent ==2)System.out.println("Movimento Inválido");
                     return RespostasMovePecaEnum.MovimentoInvalido.getValor();
                 
                 }else if((my_player==1 && ct.getPecasP1()>0)||(my_player==2 && ct.getPecasP2()>0)) {

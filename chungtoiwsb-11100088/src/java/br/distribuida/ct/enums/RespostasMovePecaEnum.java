@@ -16,7 +16,7 @@ public enum RespostasMovePecaEnum {
         ParametrosInvalidos(-3),
 	PartidaNaoIniciada(-2),
 	JogadorNaoEncontrado(-1),
-	MovimentoInvalido(0),
+        MovimentoInvalido(0),
 	TudoCerto(1),
 	PartidaEncerrada(2);
 	

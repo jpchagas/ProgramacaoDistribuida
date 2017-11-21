@@ -34,7 +34,13 @@ public class ChungToi {
 	}
 	
 	public void move(int id, int pos,int sent, int numCasas, int orient) {
-		int i = findNewPos(pos, sent, numCasas);
+                // caso de exceção
+                if(numCasas==0 && sent!=4){
+                    board[pos]=(orient==0) ? retornaPecaLinear(id) : retornaPecaDiagonal(id);
+                    return;
+                }
+                
+                int i = findNewPos(pos, sent, numCasas);
 		board[i]=(orient==0) ? retornaPecaLinear(id) : retornaPecaDiagonal(id);
                 if(sent!=4){
                     board[pos]= ".";
@@ -240,33 +246,47 @@ public class ChungToi {
 	}
 	
 	public boolean validaMovimento(int id,int pos,int sent, int numCasas, int orient) {
+            if(numCasas!=0){
 		if(board[pos].equals("C")||board[pos].equals("E")) {
 			if(sent == JogadasEnum.DiagonalDireitaInferior.getValor() || sent == JogadasEnum.DiagonalEsquerdaInferior.getValor()|| sent == JogadasEnum.DiagonalEsquerdaSuperior.getValor()|| sent == JogadasEnum.DiagonlaDireitaSuperior.getValor()) {
+                                if(id==101 && pos==6 && sent ==2)
 				System.out.println("Perpendicular andando da Diagonal");
 				return true;
 			}
 		}else if(board[pos].equals("c")||board[pos].equals("e")) {
 			if(sent == JogadasEnum.Baixo.getValor() || sent == JogadasEnum.Cima.getValor()|| sent == JogadasEnum.Direita.getValor()|| sent == JogadasEnum.Esquerda.getValor()) {
-				System.out.println("Diagonal Andando na Perpendicular");
+				if(id==101 && pos==6 && sent ==2)
+                                System.out.println("Diagonal Andando na Perpendicular");
 				return true;
 			}
 		}
-                if(findNewPos(pos, sent, numCasas)==-1){
+            }
+                if(numCasas!=0 && findNewPos(pos, sent, numCasas)==-1){
+                    if(id==101 && pos==6 && sent ==2 )
+                    System.out.println("Find new pos");
                     return true;
                 }
                 
-		if (!(board[findNewPos(pos, sent, numCasas)].equals("."))&&sent!=4) {
-                        System.out.println(id + "" +pos + "" +sent+ "" +numCasas+ ""+orient);
-			System.out.println("Posição não vazia");
+                if(numCasas==0 || (sent==4 && numCasas!=0)){
+                    if((board[pos].equals("C")||board[pos].equals("E")) && orient==0) {
+                        return true;
+                    }else if((board[pos].equals("c")||board[pos].equals("e")) && orient==1) {
+                        return true;
+                    }
+                }
+		if (numCasas != 0 && (!(board[findNewPos(pos, sent, numCasas)].equals("."))&&sent!=4)) {
+                    if(id==101 && pos==6 && sent ==2)    
+                    System.out.println(id + " " +pos + " " +sent+ " " +numCasas+ " "+orient);
+		if(id==101 && pos==6 && sent ==2)
+                    System.out.println("Posição não vazia");
 			return true;
 		}
                 if(!(minhaPeca(id, pos))) {
-			System.out.println("Não é minha peça");
+		if(id==101 && pos==6 && sent ==2)	
+                    System.out.println("Não é minha peça");
 			return true;
 		}
-                
-                
-                
+
 		return false;
 	}
 	
