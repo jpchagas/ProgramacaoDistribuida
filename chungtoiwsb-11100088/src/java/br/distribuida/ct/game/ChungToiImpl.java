@@ -10,6 +10,8 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import br.distribuida.ct.enums.*;
 import br.distribuida.ct.model.*;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  *
@@ -20,7 +22,7 @@ public class ChungToiImpl implements ChungToiInterface {
 	private static final long serialVersionUID = 1234L;
 	private static final int numMaxPartidas = 500;
 	private static final int numMaxPlayers = 1000;
-	private ArrayList<ChungToi> partidas;
+	private List<ChungToi> partidas;
         private ArrayList<ChungToi> prePartidas;
 	private ArrayList<Player> players;
         private ArrayList<Player> prePlayers;
@@ -29,7 +31,7 @@ public class ChungToiImpl implements ChungToiInterface {
 		
 	
 	public ChungToiImpl() {
-		partidas = new ArrayList<ChungToi>(numMaxPartidas);
+		partidas = new CopyOnWriteArrayList<ChungToi>();
 		players = new ArrayList<Player>(numMaxPlayers);
                 prePartidas = new ArrayList<ChungToi>(numMaxPartidas);
 		prePlayers = new ArrayList<Player>(numMaxPlayers);

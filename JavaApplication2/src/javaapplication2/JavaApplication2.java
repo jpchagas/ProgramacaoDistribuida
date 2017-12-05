@@ -13,7 +13,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -31,29 +33,79 @@ public class JavaApplication2 {
             // TODO code application logic here
             CTWebService_Service ctwer = new CTWebService_Service();
             port = ctwer.getCTWebServicePort();
-            executaTeste("ChungToi-0000");//ok
-            executaTeste("ChungToi-0100");//um monte de erro
-            executaTeste("ChungToi-1000");
-            executaTeste("ChungToi-2000");
-            executaTeste("ChungToi-2500");
-            executaTeste("ChungToi-3000");
-            executaTeste("ChungToi-4000");
-            executaTeste("ChungToi-4500");
+//            executaTeste("ChungToi-0000");//ok
+//            executaTeste("ChungToi-0100");//um monte de erro
+//            executaTeste("ChungToi-1000");
+//            executaTeste("ChungToi-2000");
+//            executaTeste("ChungToi-2500");
+//            executaTeste("ChungToi-3000");
+//            executaTeste("ChungToi-4000");
+//            executaTeste("ChungToi-4500");
+
+        runSequential(new ArrayList<>(Arrays.asList("ChungToi-0000", "ChungToi-0100", "ChungToi-1000", "ChungToi-3000")));
+        runParallel(new ArrayList<>(Arrays.asList("ChungToi-2000", "ChungToi-2500")));
+        runParallel(new ArrayList<>(Arrays.asList("ChungToi-4000", "ChungToi-4500")));
+            
         }
-    
-     private static int preRegistro(String j1, int id1, String j2, int id2) {
-        return port.preRegistro(j1, id1, j2, id2);
+        
+        private static void runParallel(List<String> tests) {
+        List<Thread> threads = new ArrayList<>();
+        
+        // Prepara threads
+        for(String test : tests) {
+            threads.add(new Thread() {
+                @Override
+                public void run() {
+                    try {
+                        executaTeste(test);
+                    } catch (IOException ex) {
+                        System.out.println("Falha na execução do teste.");
+                        ex.printStackTrace(System.out);
+                    }
+                }
+            });
+        }
+        
+        // Roda threads
+        for(Thread t : threads) {
+            t.start();
+        }
+        
+        for(Thread t : threads) {
+            try {
+                t.join();
+            } catch (InterruptedException ex) {
+                System.out.println("Falha ao reagrupar thread.");
+                ex.printStackTrace(System.out);
+            }
+        }
+        System.out.println("Teste paralelo concluido.");
     }
     
+    private static void runSequential(List<String> tests) {
+        for(String test : tests) {
+            try {
+                executaTeste(test);
+            } catch (IOException ex) {
+                System.out.println("Falha ao executar teste " + test);
+                ex.printStackTrace(System.out);
+            }
+        }
+        System.out.println("Teste sequencial concluido.");
+    }
+    
+//     private static int preRegistro(String j1, int id1, String j2, int id2) {
+//        return port.preRegistro(j1, id1, j2, id2);
+//    }
+    
     private static void executaTeste(String rad) throws IOException {
-        String inFile = rad+".in";
+        String inFile = rad + ".in";
         FileInputStream is = new FileInputStream(new File(inFile));
-        System.setIn(is);
+        //System.setIn(is);
 
-        String outFile = rad+".out";
+        String outFile = rad + ".out";
         FileWriter outWriter = new FileWriter(outFile);
-        try (PrintWriter out = new PrintWriter(outWriter)) {
-            Scanner leitura = new Scanner(System.in);
+        try (PrintWriter out = new PrintWriter(outWriter); Scanner leitura = new Scanner(is)) {
             int numOp = leitura.nextInt();
             for (int i=0;i<numOp;++i) {
                 System.out.print("\r"+rad+": "+(i+1)+"/"+numOp);
